@@ -1,8 +1,8 @@
 const express = require("express");
 require("dotenv").config();
 
-app.use(express.json());
 const app = express();
+app.use(express.json());
 
 app.get("/", (req, res) => {
   res.send("Hello from Express!");
