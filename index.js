@@ -3,8 +3,12 @@ const axios = require("axios");
 require("dotenv").config();
 const fs = require("fs");
 
-const app = express();
 app.use(express.json());
+const app = express();
+
+app.get("/", (req, res) => {
+  res.send("Hello from Express!");
+});
 
 const VERCEL_API_URL = "https://api.vercel.com/v9/projects";
 const VERCEL_TOKEN = process.env.VERCEL_TOKEN;
@@ -41,9 +45,6 @@ app.post("/add-env", async (req, res) => {
 });
 
 // Basic route to verify the app is running
-app.get("/", (req, res) => {
-  res.send("Hello from Express!");
-});
 
 app.get("/env", (req, res) => {
   fs.writeFileSync("./.env", "DATABASE_URI=1231232123.2312");
